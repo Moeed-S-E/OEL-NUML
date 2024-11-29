@@ -18,11 +18,47 @@ struct Item
 struct CartItem
 {
     Item item;
-    int quantiy;
+    int quantity;
 };
 void displayItems(Item storeItems[], const int SIZE);
 int getValidQuantity(int availableStock);
+// Function to add item to the cart
+void addToCart(Item storeItems[], CartItem cart[], int& cartSize, int MAX_ITEMS, int MAX_CART){
+    int itemNumber;
+    cout << "Enter the item number to add to the cart: ";
+    cin >> itemNumber;
 
+
+    if (itemNumber < 1 || itemNumber > MAX_ITEMS) {
+        cout << "Invalid item number. Please select a valid item.\n";
+        return;
+    }
+    Item& item = storeItems[itemNumber - 1];
+
+    if (item.stock <= 0) {
+        cout << "Item is out of stock.\n";
+        return;
+    }
+    // Get valid quantity from user
+    int quantity = getValidQuantity(item.stock);
+    // Check if there is enough space in the cart
+    if (cartSize >= MAX_CART) {
+        cout << "Cart is full. You can't add more items.\n";
+        return;
+    }
+
+
+    // Add the item to the cart
+    cart[cartSize].item = item;
+    cart[cartSize].quantity = quantity;
+    cartSize++;
+
+    // Update the stock in the store
+    item.stock -= quantity;
+
+    cout << quantity << " " << item.name << "(s) added to your cart.\n";
+
+}
 
 int main()
 {
@@ -75,62 +111,3 @@ int getValidQuantity(int availableStock)
 
     return quantity;
 }
-
-/*
-Function to validate user input for quantity
-int getValidQuantity(int availableStock) {
-
-        // Check for valid input (non-negative and less than or equal to available stock)
-        if (cin.fail() || quantity <= 0 || quantity > availableStock) {
-            cin.clear(); // Clear error flag
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore invalid input
-            cout << "Invalid quantity. Please enter a number between 1 and " << availableStock << ".\n";
-        } else {
-            break;
-        }
-    }
-    return quantity;
-}
-
-// Function to add item to the cart
-void addToCart(Item storeItems[], CartItem cart[], int& cartSize, int MAX_ITEMS, int MAX_CART) {
-    int itemNumber;
-    
-    // Get item number from the user
-    cout << "Enter the item number to add to the cart: ";
-    cin >> itemNumber;
-
-    // Validate item number
-    if (itemNumber < 1 || itemNumber > MAX_ITEMS) {
-        cout << "Invalid item number. Please select a valid item.\n";
-        return;
-    }
-
-    Item& item = storeItems[itemNumber - 1];  // Accessing item by ID (1-based)
-
-    // Check if the item is in stock
-    if (item.stock <= 0) {
-        cout << "Item is out of stock.\n";
-        return;
-    }
-
-    // Get valid quantity from user
-    int quantity = getValidQuantity(item.stock);
-    
-    // Check if there is enough space in the cart
-    if (cartSize >= MAX_CART) {
-        cout << "Cart is full. You can't add more items.\n";
-        return;
-    }
-
-    // Add the item to the cart
-    cart[cartSize].item = item;
-    cart[cartSize].quantity = quantity;
-    cartSize++;
-
-    // Update the stock in the store
-    item.stock -= quantity;
-
-    cout << quantity << " " << item.name << "(s) added to your cart.\n";
-}
-*/
