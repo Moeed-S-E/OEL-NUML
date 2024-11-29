@@ -55,18 +55,31 @@ void displayItems(Item storeItems[], const int SIZE)
 // Function to Check Available Stock
 int getValidQuantity(int availableStock)
 {
-    return 0;
+    int quantity = 0;
+
+    while (true) // loop infinitly run
+    {
+        cout<<"Enter Quanity to add: ";
+        cin>>quantity;
+        if (cin.fail() || quantity <= 0 || quantity > availableStock)
+        {
+            cout << "Invalid quantity. Please enter a number between 1 and " << availableStock << ".\n";
+        }else
+        {
+            break;
+        }
+        
+        
+    }
+    
+
+    return quantity;
 }
 
 /*
 Function to validate user input for quantity
 int getValidQuantity(int availableStock) {
-    int quantity = 0;
-    
-    while (true) {
-        cout << "Enter quantity to add: ";
-        cin >> quantity;
-        
+
         // Check for valid input (non-negative and less than or equal to available stock)
         if (cin.fail() || quantity <= 0 || quantity > availableStock) {
             cin.clear(); // Clear error flag
