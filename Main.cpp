@@ -17,6 +17,15 @@ struct CartItem{
     int quantiy;
 };
 
+// Function to Display the Items
+void displayItems(){
+    cout<<"Available Items: \n";
+    // ...... 
+    // code later on I will add
+    // ..... 
+}
+
+
 int main(){
     
     return 0;
