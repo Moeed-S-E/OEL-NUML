@@ -1,10 +1,20 @@
 #include <iostream>
+#include<string>
 
 using namespace std;
 
-// Shopping Cart Structure 
-struct ShoppingCart{
+// Item's Structure
+struct Item
+{
+    string name;
+    double price; // reason to use double is because int max store 4 bytes 
+    int stock;
+};
 
+// Shopping Cart Structure 
+struct CartItem{
+    Item item;
+    int quantiy;
 };
 
 int main(){
