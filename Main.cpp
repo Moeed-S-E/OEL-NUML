@@ -28,16 +28,18 @@ struct CartItem
 
 
 // Function to Display the Items
-void displayItems(Item storeItems[], const int SIZE)
+// Function to Display the Items
+void displayItems(Item storeItems[], const int currentItemCount)
 {
     cout << "Available Items: \n";
-    for (size_t i = 0; i < SIZE; i++)
+    for (size_t i = 0; i < currentItemCount; i++)
     {
         cout << storeItems[i].productID << ". " << storeItems[i].name << " ("
              << storeItems[i].category << ") - $" << storeItems[i].price
              << " (Stock: " << storeItems[i].stock << ")" << endl;
     }
 }
+
 // Function to Check Available Stock
 int getValidQuantity(int availableStock)
 {
@@ -113,8 +115,11 @@ void viewCart(CartItem cart[],int& cartSize) {
     }
     cout << "\nTotal: $" << total << endl;
 }
-
-
+void checkout(int& cartSize) {
+    cartSize = 0;
+    cout << "\nCheckout completed!\n";
+    
+}
 
 int main()
 {
@@ -126,6 +131,8 @@ int main()
         {2, "Phone", "Electronics", 500.00, 20},
         {3, "Tablet", "Electronics", 300.00, 15},
         {4, "Headphones", "Accessories", 50.00, 30}};
+    
+    int currentItemCount = 4;
 
     CartItem cart[MAX_CART];
     int cartSize = 0;
@@ -144,7 +151,7 @@ int main()
 
         switch (choice) {
             case 1:
-                displayItems(storeItems, MAX_ITEMS);
+                displayItems(storeItems, currentItemCount);
                 break;
             case 2:
                 addToCart(storeItems, cart, cartSize, MAX_ITEMS, MAX_CART);
@@ -153,7 +160,7 @@ int main()
                 viewCart(cart, cartSize); 
                 break;
             case 4:
-                // checkout(cart, cartSize);
+                checkout(cartSize);
                 break;
             case 5:
                 cout << "Exiting...\n";
