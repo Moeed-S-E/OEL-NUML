@@ -4,7 +4,7 @@
 ## Programming Fundamentals
 ## Semester: 1
 
-# Open Ended Lab Project - E-Commerce Shopping Cart System
+# Open Ended Lab Project :-  E-Commerce Shopping Cart System
 
 
 ## Overview
