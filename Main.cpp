@@ -28,7 +28,6 @@ struct CartItem
 
 
 // Function to Display the Items
-// Function to Display the Items
 void displayItems(Item storeItems[], const int currentItemCount)
 {
     cout << "Available Items: \n";
