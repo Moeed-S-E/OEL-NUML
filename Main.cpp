@@ -104,21 +104,7 @@ void addToCart(Item storeItems[], CartItem cart[], int& cartSize, int MAX_ITEMS,
 
 }
 
-void viewCart(CartItem cart[],int& cartSize) {
-    double total = 0.0;
-    cout << "\nYour Cart:\n";
-    for (int i = 0; i < cartSize; ++i) {
-        CartItem item = cart[i];
-        cout << item.item.name << " x " << item.quantity << " = $" << item.item.price * item.quantity << endl;
-        total += item.item.price * item.quantity;
-    }
-    cout << "\nTotal: $" << total << endl;
-}
-void checkout(int& cartSize) {
-    cartSize = 0;
-    cout << "\nCheckout completed!\n";
-    
-}
+
 
 int main()
 {
@@ -156,10 +142,10 @@ int main()
                 addToCart(storeItems, cart, cartSize, MAX_ITEMS, MAX_CART);
                 break;
             case 3:
-                viewCart(cart, cartSize); 
+                // under dev
                 break;
             case 4:
-                checkout(cartSize);
+                // under dev
                 break;
             case 5:
                 cout << "Exiting...\n";
